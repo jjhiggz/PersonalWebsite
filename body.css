@@ -1,3 +1,29 @@
 .do-not-display{
   display:none;
 }
+.section-intro{
+  margin:100px;
+}
+.sub-header{
+  padding: 60px;
+  display: flex;
+  flex-direction: row;
+}
+
+@media only screen and (max-width: 975px) {
+  .sub-header{
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .sub-header{
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+  }
+  .section-intro{
+    margin:0px;
+  }
+}

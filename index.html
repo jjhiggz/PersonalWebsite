@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="./section.css" />
     <link rel="stylesheet" href="./body.css" />
     <link rel="stylesheet" href="./contacts.css" />
+    <link rel="stylesheet" href="./slideshow.css" />
     <script src="app.js" defer></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap.native@3.0.0/dist/bootstrap-native.min.js"></script>
     <title>JonathanHigger.com</title>
   </head>
 
@@ -17,33 +19,32 @@
           Jonathan Higger
         </h1>
         <nav class="navbar">
-          <li class="nav-item" id="about-nav" onclick="goToPage()">About</li>
+          <li class="nav-item" id="about-nav" onclick="goToPageHandler()">About</li>
           <div class="nav-separator"></div>
-          <li class="nav-item" id="projects-nav" onclick="goToPage()">
+          <li class="nav-item" id="projects-nav" onclick="goToPageHandler()">
             Projects
           </li>
           <div class="nav-separator"></div>
-          <li class="nav-item" id="skills-nav" onclick="goToPage()">Skills</li>
+          <li class="nav-item" id="skills-nav" onclick="goToPageHandler()">Skills</li>
           <div class="nav-separator"></div>
-          <li class="nav-item" id="contact-nav" onclick="goToPage()">Contact</li>
+          <li class="nav-item" id="contact-nav" onclick="goToPageHandler()">Contact</li>
         </nav>
-      </header>
+    </header>
 
     <section id="about-section" class="do-not-display">
       <h2 class="section-header" id="about-section-title">
         About Jonathan
       </h2>
-      <div class="img-wrapper">
-        <img
-          src="./src/PicsOfJon/proffesional_higher_res.jpg"
-          alt="My friend Stephen and I at my high-school graduation"
-        />
+      <div class="sub-header">
+        <div class="slideshow-container" id="about-slideshow">
+          
+        </div>
+        <p class="section-intro">
+          Jonathan Higger is a Software Developer with a background in Chemical
+          Engineering looking to apply creativity and work ethic towards building
+          well designed web or computer applications.
+        </p>
       </div>
-      <p class="section-intro">
-        Jonathan Higger is a Software Developer with a background in Chemical
-        Engineering looking to apply creativity and work ethic towards building
-        well designed web or computer applications.
-      </p>
       <div class="break-line"></div>
       <h3 class="paragraph-header">
         Schooling
@@ -108,17 +109,27 @@
       </div>
     </section>
     <section id="projects-section" class="do-not-display">
-      <h2 class="section-header" id="about-section-title">
+      <h2 class="section-header" id="projects-section-title">
         Jonathan's Projects
       </h2>
+      <div class="sub-header">
+        <div class="slideshow-container">
+          <!-- Full-width images with number and caption text -->
+  
+          <!-- Next and previous buttons -->
+          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+      </div>
+
     </section>
     <section id="skills-section" class="do-not-display">
-      <h2 class="section-header" id="about-section-title">
+      <h2 class="section-header" id="skills-section-title">
         Jonathan's Skills
       </h2>
     </section>
     <section id="contact-section" class="do-not-display">
-      <h2 class="section-header" id="about-section-title">
+      <h2 class="section-header" id="contact-section-title">
         Jonathan's Contact Info
       </h2>
       <nav id="link-buttons">
