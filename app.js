@@ -30,10 +30,14 @@ const aboutPictures = [
     img: './src/about/Nice Mountain Picture.jpg',
     description: "- life is like a box of chocolates, you never know what you're gonna get"
   },
-  
 ]
+const soundcloudEmbed = `<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1029461755&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/higgzmadethebeat" title="HIGGZ (Humblegawwd)" target="_blank" style="color: #cccccc; text-decoration: none;">HIGGZ (Humblegawwd)</a> · <a href="https://soundcloud.com/higgzmadethebeat/sets/i-got-impatient" title="I Got Impatient" target="_blank" style="color: #cccccc; text-decoration: none;">I Got Impatient</a></div>`
 
-const skillsTopics = ['Live Performance', "Music Production", "Photography", "Rock Climbing", "Software Development", "Videography"]
+
+let $soundcloud = document.createElement('div')
+$soundcloud.innerHTML = soundcloudEmbed
+
+const skillsTopics = ['Live Performance', "Music Production", "Photography", "Software Development", "Videography"]
 let skills = {}
 
 const getExamples = ( skillTopic ) => {
@@ -116,7 +120,19 @@ const addDropDown = (parentNodeID, items) => {
 }
 
 function showSkill(item){
-  console.log('showing skill', item)
+  return {
+    "Live Performance": () => console.log('Live performance'),
+    "Music Production": () => showMusic(),
+    "Photography": () => console.log('photography'),
+    "Software Development":() => console.log('Software Development'),
+    "Videography":()=> console.log('Videography')
+  }[item]()
+}
+
+function showMusic(){
+  clearSlides()
+  let $container = document.querySelector('.slideshow-container')
+  $container.innerHTML += soundcloudEmbed
 }
 
 function showDropDown() {
