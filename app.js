@@ -122,17 +122,23 @@ const addDropDown = (parentNodeID, items) => {
 function showSkill(item){
   return {
     "Live Performance": () => console.log('Live performance'),
-    "Music Production": () => showMusic(),
-    "Photography": () => console.log('photography'),
+    "Music Production": showMusic,
+    "Photography": showPhotography,
     "Software Development":() => console.log('Software Development'),
     "Videography":()=> console.log('Videography')
   }[item]()
 }
-
 function showMusic(){
   clearSlides()
-  let $container = document.querySelector('.slideshow-container')
+  let $container = document.querySelector('#skills-slideshow')
   $container.innerHTML += soundcloudEmbed
+}
+function showPhotography(){
+  clearSlides()
+  addSlideShow('skills', skills.Photography)
+  let $container = document.querySelector('#skills-slideshow')
+  $container.innerHTML += soundcloudEmbed
+  showSlides( )
 }
 
 function showDropDown() {
@@ -212,12 +218,23 @@ function currentSlide(n) {
 }
 function clearSlides(){
   range(0,slides.length - 1).forEach( () => {
-    const slide = document.querySelector(".mySlides");
-    slide.remove()
+    if(document.querySelector(".mySlides") !== null ){
+      const slide = document.querySelector(".mySlides");
+      // slide.remove()
+    }
   })
+
+  let soundcloud = document.querySelector('iframe')
+  if(soundcloud !== null ){
+    document.querySelector('iframe').remove()
+    console.log(document.querySelector('iframe').remove())
+  }
+  
+
 }
 
 function showSlides(n){
+  console.log(n)
   let i;
   slides = document.getElementsByClassName("mySlides");
   if (n > slides.length) { slideIndex = 1 }
