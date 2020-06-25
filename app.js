@@ -4,7 +4,13 @@ let $currentSection = document.getElementById('about-section')
 let $currentSlideshow = document.getElementById('about-slideshow')
 let newSection
 let newSectionName
+let slides
+let dots
+let slideIndex = 1;
 
+const range = ( start, end ) => {
+  return Array.from({ length: end - start + 1 }, (_, i) => i)
+}
 const aboutPictures = [
   {
     id: '1',
@@ -27,6 +33,25 @@ const aboutPictures = [
   
 ]
 
+const skillsTopics = ['Live Performance', "Music Production", "Photography", "Rock Climbing", "Software Development", "Videography"]
+let skills = {}
+
+const getExamples = ( skillTopic ) => {
+  let examples = []
+  for( let i = 1 ; i< 7; i++ ){
+    examples.push({
+      img: `./src/skills/${skillTopic}/${i}.jpg`,
+      description: skillTopic + '-' + 'image'+ '-' + i,
+      id: i,
+      name: 'picture'
+    })
+  }
+  return examples
+}
+
+skillsTopics.forEach( skillTopic => {
+  skills[skillTopic] = getExamples(skillTopic)
+})
 
 const goToPageHandler = (initialLoad = false) => {
   return (() => {
@@ -40,22 +65,86 @@ const goToPageHandler = (initialLoad = false) => {
     $currentSection.className = 'do-not-display' //hides the old current selection
     $currentSection = newSection // updates the current selection
     $currentSection.className = '' //undoes the do-not-display
-    addSlideShow(newSectionName)
+    loadSection(newSectionName)()
+    
   })()
 }
+function loadSection(section){ 
+  return {
+    about: loadAbout,
+    projects: loadProjects,
+    skills: loadSkills,
+    contact: loadContact
+  }[section]
+}
 
-const addSlideShow = (section) => {
-  const isSlideShow = {
-    about:true,
-    projects: false,
-    skills: false,
-    contact: false,
+const loadAbout = () => {
+  addSlideShow('about', aboutPictures)
+}
+const loadProjects = () => {
+}
+
+const loadSkills = () => {
+  clearSlides()
+  clearDropDown()
+  addSlideShow('skills', skills.Photography)
+  addDropDown('skills-section', Object.keys(skills ))
+}
+const clearDropDown = () => {
+  if(document.getElementById('dropdown-section')){
+    document.querySelector('#dropdown-section').remove()
   }
+}
+const addDropDown = (parentNodeID, items) => {
+  // 
+  let $parentNode = document.getElementById(parentNodeID)
+  let $dropDown = document.createElement('div')
+  let $button = document.createElement('button')
+  let $myDropDown = document.createElement('div')
 
-  if(isSlideShow[section]){
-    const $slideShow = document.getElementById(section + '-slideshow')
-    const aboutSlides = aboutPictures.map( picture => createSlide( picture, $slideShow) )
-    aboutSlides.forEach(slide => $slideShow.append(slide))
+  $button.className = "dropbtn"
+  $button.addEventListener('click', showDropDown )
+  $button.innerText = "Check out my other skills "
+  $myDropDown.className = 'dropdown-content'
+  $myDropDown.id = 'myDropdown'
+  items.forEach(item => {
+    $myDropDown.innerHTML += `<a href="#" onclick="showSkill('${item}')">${item}</a>`
+  })
+  $dropDown.append($button,$myDropDown)
+  $dropDown.id = 'dropdown-section'
+  $parentNode.append($dropDown)
+}
+
+function showSkill(item){
+  console.log('showing skill', item)
+}
+
+function showDropDown() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+const loadContact = () => {
+  console.log('loading Contact')
+}
+
+const addSlideShow = (section, array) => {
+  const $slideShow = document.getElementById(section + '-slideshow')
+    const slides = array.map( picture => createSlide( picture, $slideShow) )
+    slides.forEach(slide => {$slideShow.append(slide)
+    })
     $slideShow.innerHTML = $slideShow.innerHTML + 
       `<a 
         class="prev"
@@ -69,7 +158,7 @@ const addSlideShow = (section) => {
       >
         &#10095;
       </a>`
-  }
+    showSlides(1)
 }
 
 const createSlide = ( image, slideshow) => {
@@ -93,7 +182,7 @@ const createSlide = ( image, slideshow) => {
   
 }
 
-var slideIndex = 1;
+
 // showSlides(slideIndex);
 
 // Next/previous controls
@@ -105,23 +194,25 @@ function plusSlides(n) {
 function currentSlide(n) {
   showSlides(slideIndex = n);
 }
-
-function showSlides(n) {
-  console.log('hit')
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
+function clearSlides(){
+  range(0,slides.length - 1).forEach( () => {
+    const slide = document.querySelector(".mySlides");
+    slide.remove()
+  })
 }
+
+function showSlides(n){
+  let i;
+  slides = document.getElementsByClassName("mySlides");
+  if (n > slides.length) { slideIndex = 1 }
+  if (n < 1) { slideIndex = slides.length }
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+
+  slides[slideIndex-1].style.display = "block";
+}
+
 document.addEventListener('DOMContentLoaded',() => {
   goToPageHandler(true)
   showSlides(1)
