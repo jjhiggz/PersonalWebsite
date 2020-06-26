@@ -31,13 +31,31 @@ const aboutPictures = [
     description: "- life is like a box of chocolates, you never know what you're gonna get"
   },
 ]
-const soundcloudEmbed = `<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1029461755&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/higgzmadethebeat" title="HIGGZ (Humblegawwd)" target="_blank" style="color: #cccccc; text-decoration: none;">HIGGZ (Humblegawwd)</a> · <a href="https://soundcloud.com/higgzmadethebeat/sets/i-got-impatient" title="I Got Impatient" target="_blank" style="color: #cccccc; text-decoration: none;">I Got Impatient</a></div>`
+const soundcloudEmbed = `<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1029461755&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/higgzmadethebeat" title="HIGGZ (Humblegawwd)" target="_blank" style="color: #cccccc; text-decoration: none;">`
 
+const videographyEmbed = `<iframe width="560" height="315" src="https://www.youtube.com/embed/ESZ74OzpG7U" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+
+const livePerformanceEmbed = [`<iframe width="560" height="315" src="https://www.youtube.com/embed/6dlJ00u-DsY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
+`<iframe width="560" height="315" src="https://www.youtube.com/embed/ru2f6_-hrsE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
+`<iframe width="560" height="315" src="https://www.youtube.com/embed/AZ95l0bU25U" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
+`<iframe width="560" height="315" src="https://www.youtube.com/embed/l-X5FYNiRrA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+]
+
+const beatsEmbed = [
+  `<iframe width="560" height="315" src="https://www.youtube.com/embed/Xe5pdUOjZjM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
+  `<iframe width="560" height="315" src="https://www.youtube.com/embed/uQTbou4hPl0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
+  `<iframe width="560" height="315" src="https://www.youtube.com/embed/BNTfsFX0vh0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
+  `<iframe width="560" height="315" src="https://www.youtube.com/embed/l-X5FYNiRrA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+]
+
+Array.prototype.sample = function(){
+  return this[Math.floor(Math.random()*this.length)];
+}
 
 let $soundcloud = document.createElement('div')
 $soundcloud.innerHTML = soundcloudEmbed
 
-const skillsTopics = ['Live Performance', "Music Production", "Photography", "Software Development", "Videography"]
+const skillsTopics = ['Live Performance', "Music Production", "Photography", "Videography", "Beats"]
 let skills = {}
 
 const getExamples = ( skillTopic ) => {
@@ -121,15 +139,19 @@ const addDropDown = (parentNodeID, items) => {
 
 function showSkill(item){
   return {
-    "Live Performance": () => console.log('Live performance'),
-    "Music Production": showMusic,
+    "Live Performance": () => showiframe(livePerformanceEmbed.sample()),
+    "Music Production": () => showiframe(soundcloudEmbed),
     "Photography": showPhotography,
-    "Software Development":() => console.log('Software Development'),
-    "Videography":()=> console.log('Videography')
+    "Videography":() => showiframe(videographyEmbed),
+    "Beats": () => showiframe(beatsEmbed.sample())
   }[item]()
 }
-function showMusic(){
+function showiframe(iframeElement){
   clearSlides()
+  let $container = document.querySelector('#skills-slideshow')
+  $container.innerHTML += iframeElement
+}
+function showVideography(){
   let $container = document.querySelector('#skills-slideshow')
   $container.innerHTML += soundcloudEmbed
 }
@@ -228,14 +250,14 @@ function clearSlides(){
   let soundcloud = document.querySelector('iframe')
   if(soundcloud !== null ){
     document.querySelector('iframe').remove()
-    console.log(document.querySelector('iframe').remove())
+    // console.log(document.querySelector('iframe').remove())
   }
   
 
 }
 
 function showSlides(n){
-  console.log(n)
+  // console.log(n)
   let i;
   slides = document.getElementsByClassName("mySlides");
   if (n > slides.length) { slideIndex = 1 }
