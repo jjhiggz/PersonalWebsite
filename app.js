@@ -137,8 +137,8 @@ function showPhotography(){
   clearSlides()
   addSlideShow('skills', skills.Photography)
   let $container = document.querySelector('#skills-slideshow')
-  $container.innerHTML += soundcloudEmbed
-  showSlides( )
+  // $container.innerHTML += soundcloudEmbed
+  showSlides(1)
 }
 
 function showDropDown() {
@@ -217,10 +217,11 @@ function currentSlide(n) {
   showSlides(slideIndex = n);
 }
 function clearSlides(){
+  if(document.querySelector('iframe') !== null){ document.querySelector('iframe').remove() }
   range(0,slides.length - 1).forEach( () => {
     if(document.querySelector(".mySlides") !== null ){
       const slide = document.querySelector(".mySlides");
-      // slide.remove()
+      slide.remove()
     }
   })
 
