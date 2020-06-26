@@ -45,7 +45,7 @@ const beatsEmbed = [
   `<iframe width="560" height="315" src="https://www.youtube.com/embed/Xe5pdUOjZjM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
   `<iframe width="560" height="315" src="https://www.youtube.com/embed/uQTbou4hPl0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
   `<iframe width="560" height="315" src="https://www.youtube.com/embed/BNTfsFX0vh0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
-  `<iframe width="560" height="315" src="https://www.youtube.com/embed/l-X5FYNiRrA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+  `<iframe width="560" height="315" src="https://www.youtube.com/watch?v=EYQ_hKC7zsQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
 ]
 
 Array.prototype.sample = function(){
