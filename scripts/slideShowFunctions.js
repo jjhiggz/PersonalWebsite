@@ -1,0 +1,45 @@
+function addSlideShow($slideShow, images) {
+  images
+    .map((picture) => createSlide(picture, $slideShow))
+    .forEach((slide) => {
+      $slideShow.append(slide);
+    });
+}
+
+function createSlide(image, slideshow) {
+  let $slide = document.createElement("div");
+  $slide.innerHTML = `
+    <div class="numbertext">${image.id}</div>
+    <img src="${image.img}" alt="to be replaces when I add data later" />
+    <div class="text"/>
+      ${image.description}
+    </div>
+    <a class="prev">&#10094;</a>
+    <a class="next">&#10095;</a>
+  `;
+  $slide.classList.add("my-slides", "fade");
+
+  return $slide;
+}
+
+function recalculateIndex(slideIndex, isDecrement, slideLength) {
+  if (isDecrement) {
+    slideIndex = slideIndex > 0 ? slideIndex - 1 : slideLength - 1;
+  } else {
+    slideIndex = slideIndex + 1 > slideLength - 1 ? 0 : slideIndex + 1;
+  }
+  return slideIndex;
+}
+
+//showSlideAt
+function showSlideAt(slideIndex) {
+  $slides = document.querySelectorAll(".my-slides");
+
+  $slides.forEach(($slide, arrayIndex) => {
+    if (slideIndex !== arrayIndex) {
+      $slide.style.display = "none";
+    } else {
+      $slide.style.display = "block";
+    }
+  });
+}

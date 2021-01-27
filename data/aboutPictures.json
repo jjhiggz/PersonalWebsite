@@ -1,0 +1,20 @@
+[
+  {
+    "id": "1",
+    "name": "chill basecamp",
+    "img": "https://i.imgur.com/CwT8ZNA.jpg",
+    "description": "In my spare time, I enjoy hiking. Recently I hiked the fourteener \"quandary peak\""
+  },
+  {
+    "id": "2",
+    "name": "Jon in a Band",
+    "img": "https://i.imgur.com/aEIO5fI.jpg",
+    "description": "I used to be in a band called \"Kona the Band\". We are on spotify if you are curious"
+  },
+  {
+    "id": "3",
+    "name": "nice photo",
+    "img": "https://i.imgur.com/CN2WIk8.jpg",
+    "description": "- life is like a box of chocolates, you never know what you're gonna get"
+  }
+]

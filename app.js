@@ -18,30 +18,6 @@ const range = (start, end) => {
   return Array.from({ length: end - start + 1 }, (_, i) => i);
 };
 
-const aboutPictures = [
-  {
-    id: "1",
-    name: "chill basecamp",
-    img: "https://i.imgur.com/CwT8ZNA.jpg",
-    description:
-      'In my spare time, I enjoy hiking. Recently I hiked the fourteener "quandary peak"',
-  },
-  {
-    id: "2",
-    name: "Jon in a Band",
-    img: "https://i.imgur.com/aEIO5fI.jpg",
-    description:
-      'I used to be in a band called "Kona the Band". We are on spotify if you are curious',
-  },
-  {
-    id: "3",
-    name: "nice photo",
-    img: "https://i.imgur.com/CN2WIk8.jpg",
-    description:
-      "- life is like a box of chocolates, you never know what you're gonna get",
-  },
-];
-
 const soundcloudEmbed = `<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1029461755&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/higgzmadethebeat" title="HIGGZ (Humblegawwd)" target="_blank" style="color: #cccccc; text-decoration: none;">`;
 
 const videographyEmbed = `<iframe width="560" height="315" src="https://www.youtube.com/embed/ESZ74OzpG7U" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
@@ -251,17 +227,17 @@ const createSlide = (image, slideshow) => {
   return $div;
 };
 
-// showSlides(slideIndex);
-
 // Next/previous controls
 function plusSlides(n) {
   showSlides((slideIndex += n));
 }
 
-// // Thumbnail image controls
+ // Thumbnail image controls
 function currentSlide(n) {
   showSlides((slideIndex = n));
 }
+
+// clearSlides
 function clearSlides() {
   if (document.querySelector("iframe") !== null) {
     document.querySelector("iframe").remove();
@@ -280,6 +256,7 @@ function clearSlides() {
   }
 }
 
+//showSlides
 function showSlides(n) {
   let i;
   slides = document.getElementsByClassName("mySlides");
