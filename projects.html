@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jonathan Higger's Projects</title>
+  <link rel="stylesheet" href="styles/header.css">
+  <link rel="stylesheet" href="styles/section.css">
+  <link rel="stylesheet" href="styles/body.css">
+</head>
+<body>
+  
+    <header>
+        <h1 class="logo">
+          Jonathan Higger
+        </h1>
+        <nav class="navbar">
+          <li
+            class="nav-item" 
+            id="about-nav"
+            onclick="goToPageHandler()"
+          >
+            <a href="about.html">About</a>
+          </li>
+          <div class="nav-separator">
+          </div>
+          <li class="nav-item"
+            id="projects-nav"
+            onclick="goToPageHandler()"
+          >
+            <a href="projects.html">Projects</a>
+          </li>
+          <div class="nav-separator"></div>
+          <li
+            class="nav-item" 
+            id="skills-nav" 
+            onclick="goToPageHandler()"
+          >
+            <a href="skills.html">Skills</a>
+          </li>
+          <div class="nav-separator"></div>
+          <li 
+            class="nav-item" 
+            id="contact-nav"
+            onclick="goToPageHandler()"
+          >
+            <a href="contact.html">Contact</a>
+          </li>
+        </nav>
+    </header>
+
+    <section id="projects-section" class="">
+      <h2 class="section-header" id="projects-section-title">
+        Jonathan's Projects
+      </h2>
+      <div class="sub-header">
+        <div
+          class="project-wrapper"
+          id="project-1-wrapper"
+        >
+          <h2 class="project-name">
+           DoomTyper
+          </h2>
+          <h3 class="project-description">
+            Type testing in a Doom-themed game.
+          </h3>
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube-nocookie.com/embed/lqyaX7h29iY"
+            frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+          
+          <li><a href="http://doomtyper.web.app" target="_blank" rel="noopener noreferrer">Click Here to Play Doomtyper</a></li>
+          <li>Utilized JSON Web Tokens and localStorage to store encrypted user information client-side.</li>
+          <li>Built a robust backend using Rails, BCrypt,and safe backend storage in RESTful API format. 
+          </li>
+          <li>Designed front end in Vue JS for game logic/component hierarchy, and NES.CSS for retro styling</li>
+          <li>Triggered samples and in game music using ToneJS library.</li>
+          <li>Deployed backend through heroku, and frontend through firebase.</li>
+        </div>
+      </div>
+
+    </section>
+  
+</body>
+</html>
+

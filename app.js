@@ -1,3 +1,8 @@
+document.addEventListener("DOMContentLoaded",() => {
+  console.log('content loaded')
+  window.location.href = 'http://localhost:3000/about.html'
+})
+
 //initialize the current section as the about-section
 let $currentSection = document.getElementById("about-section");
 let $currentSlideshow = document.getElementById("about-slideshow");
@@ -6,6 +11,8 @@ let newSectionName;
 let slides;
 let dots;
 let slideIndex = 1;
+
+
 
 const range = (start, end) => {
   return Array.from({ length: end - start + 1 }, (_, i) => i);
@@ -69,7 +76,9 @@ const skillsTopics = [
   "Videography",
   "Beats",
 ];
-let skills = {};
+
+let skills = {
+};
 
 const getExamples = (skillTopic) => {
   let examples = [];
@@ -175,7 +184,6 @@ function showPhotography() {
   clearSlides();
   addSlideShow("skills", skills.Photography);
   let $container = document.querySelector("#skills-slideshow");
-  // $container.innerHTML += soundcloudEmbed
   showSlides(1);
 }
 
@@ -273,7 +281,6 @@ function clearSlides() {
 }
 
 function showSlides(n) {
-  // console.log(n)
   let i;
   slides = document.getElementsByClassName("mySlides");
   if (n > slides.length) {
@@ -282,7 +289,6 @@ function showSlides(n) {
   if (n < 1) {
     slideIndex = slides.length;
   }
-  for (i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
   }
 
