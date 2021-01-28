@@ -1,7 +1,7 @@
 * {box-sizing:border-box}
 /* Slideshow container */
 .slideshow-container img{
-  width:300PX;
+  width:300px;
 }
 .slideshow-container {
   max-width: 1000px;
@@ -9,9 +9,41 @@
   margin: auto;
 }
 
+#skills-slideshow-wrapper{
+  width: 100%;
+  max-width: 950px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255, 249, 232);
+  border: 3px solid black;
+  border-top: 0px solid black;
+  height: 550px;
+  background-image: url('https://media.istockphoto.com/vectors/abstract-white-background-geometric-texture-vector-id909493912?b=1&k=6&m=909493912&s=612x612&w=0&h=xhFLs-u5oofACK4iY3ZH3VJbTpLu5PCKCbx7MAQsOyY=');
+}
+
+.arrow-button {
+  width: 80px;
+}
+
+.left-arrow-button{
+  transform: rotate(180deg);
+}
+
+.left-arrow-button:click{
+  transform: rotate(180deg), scale(1.2);
+}
+
+.right-arrow-button:click {
+  transform: scale(1.2);
+}
+
+#skills-slideshow-container{
+  border: 10px solid black;
+}
 
 /* Hide the images by default */
-.mySlides {
+.my-slides {
   display: none;
 }
 

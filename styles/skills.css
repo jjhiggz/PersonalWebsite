@@ -1,0 +1,32 @@
+.section-menu {
+  padding: 0px;
+  margin: 0px;
+  display: flex;
+  justify-content:stretch;
+  width: 100%;
+  max-width: 950px;
+  background-color: black;
+}
+
+.section-menu-button {
+  flex: 1;
+  border: 3px solid black;
+  background-color:orange;
+  color: black;
+  margin: 0px;
+  padding: 0px;
+  border-radius: 0%;
+  border: 0px solid black;
+  height: 100%;
+}
+
+.section-menu-button:hover {
+  transform: scale(1.05);
+}
+
+.section-menu-button-child {
+  border: 3px solid black;
+  margin: 0px;
+  padding: 1px;
+  font-size: 20px;
+}

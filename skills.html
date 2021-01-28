@@ -7,9 +7,14 @@
   <link rel="stylesheet" href="styles/header.css">
   <link rel="stylesheet" href="styles/section.css">
   <link rel="stylesheet" href="styles/body.css">
+  <link rel="stylesheet" href="styles/slideshow.css">
+  <link rel="stylesheet" href="styles/dropdown.css">
+  <link rel="stylesheet" href="styles/skills.css">
+  <script src="scripts/helperFunctions.js"></script>
+  <script src="scripts/slideShowFunctions.js"></script>
+  <script defer src="scripts/skills.js"></script>
 </head>
 <body>
-
     <header>
         <h1 class="logo">
           Jonathan Higger
@@ -18,7 +23,6 @@
           <li
             class="nav-item"
             id="about-nav"
-            onclick="goToPageHandler()"
           >
             <a href="about.html">About</a>
           </li>
@@ -28,7 +32,6 @@
 
           <li class="nav-item"
             id="projects-nav"
-            onclick="goToPageHandler()"
           >
             <a href="projects.html">Projects</a>
           </li>
@@ -36,7 +39,6 @@
           <li
             class="nav-item"
             id="skills-nav"
-            onclick="goToPageHandler()"
           >
             <a href="skills.html">Skills</a>
           </li>
@@ -44,21 +46,49 @@
           <li
             class="nav-item"
             id="contact-nav"
-            onclick="goToPageHandler()"
           >
             <a href="contact.html">Contact</a>
           </li>
         </nav>
     </header>
 
-    <section id="skills-section" class="do-not-display">
+    <section id="skills-section" >
       <h2 class="section-header" id="skills-section-title">
         Jonathan's Other Skills / Hobbies
       </h2>
+      <div class="section-menu">
+        <button class="section-menu-button">
+          <div class="section-menu-button-child">
+            Live Performance
+          </div>
+        </button>
+        <button class="section-menu-button">
+          <div class="section-menu-button-child">
+            Music Production
+          </div>
+        </button>
+        <button class="section-menu-button">
+          <div class="section-menu-button-child">
+            Photography
+          </div>
+        </button>
+        <button class="section-menu-button">
+          <div class="section-menu-button-child">
+            Videography
+          </div>
+        </button>
+        <button class="section-menu-button">
+          <div class="section-menu-button-child">
+            Beats
+          </div>
+        </button>
+      </div>
       <div id="skills-slideshow-wrapper">
-        <div class="slideshow-container" id="skills-slideshow">
+        <img alt="left-button" class="arrow-button left-arrow-button" src="https://freepngimg.com/thumb/web_design/24931-2-right-arrow-transparent.png" class="left-button"/>
+        <div id="skills-slideshow-container">
 
         </div>
+        <img alt="left-button" class="arrow-button right-arrow-button " src="https://freepngimg.com/thumb/web_design/24931-2-right-arrow-transparent.png" class="left-button"/>
       </div>
     </section>
 

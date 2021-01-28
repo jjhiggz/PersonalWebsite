@@ -1,8 +1,15 @@
-function addSlideShow($slideShow, images) {
+function addSlideShow($slideShow, images, isIframe = false) {
   images
-    .map((picture) => createSlide(picture, $slideShow))
-    .forEach((slide) => {
-      $slideShow.append(slide);
+    .map((image) => {
+      if (!isIframe) {
+        return createSlide(image, $slideShow);
+      } else {
+        return htmlToElement(image);
+      }
+    })
+    .forEach(($slide) => {
+      $slide.classList.add("my-slides", "fade");
+      $slideShow.append($slide);
     });
 }
 
@@ -17,7 +24,6 @@ function createSlide(image, slideshow) {
     <a class="prev">&#10094;</a>
     <a class="next">&#10095;</a>
   `;
-  $slide.classList.add("my-slides", "fade");
 
   return $slide;
 }
@@ -39,6 +45,7 @@ function showSlideAt(slideIndex) {
     if (slideIndex !== arrayIndex) {
       $slide.style.display = "none";
     } else {
+      console.log("setting at " + arrayIndex);
       $slide.style.display = "block";
     }
   });
