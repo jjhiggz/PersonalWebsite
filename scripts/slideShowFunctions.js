@@ -29,11 +29,16 @@ function createSlide(image, slideshow) {
 }
 
 function recalculateIndex(slideIndex, isDecrement, slideLength) {
-  if (isDecrement) {
-    slideIndex = slideIndex > 0 ? slideIndex - 1 : slideLength - 1;
+  if (slideLength > 1) {
+    if (isDecrement) {
+      slideIndex = slideIndex > 0 ? slideIndex - 1 : slideLength - 1;
+    } else {
+      slideIndex = slideIndex + 1 > slideLength - 1 ? 0 : slideIndex + 1;
+    }
   } else {
-    slideIndex = slideIndex + 1 > slideLength - 1 ? 0 : slideIndex + 1;
+    slideIndex = 0;
   }
+  console.log(slideIndex);
   return slideIndex;
 }
 
