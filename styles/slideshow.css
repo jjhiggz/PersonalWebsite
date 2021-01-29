@@ -18,7 +18,6 @@
   background-color: rgb(255, 249, 232);
   border: 3px solid black;
   border-top: 0px solid black;
-  height: 550px;
   background-image: url('https://media.istockphoto.com/vectors/abstract-white-background-geometric-texture-vector-id909493912?b=1&k=6&m=909493912&s=612x612&w=0&h=xhFLs-u5oofACK4iY3ZH3VJbTpLu5PCKCbx7MAQsOyY=');
 }
 
@@ -30,18 +29,46 @@
   transform: rotate(180deg);
 }
 
-.left-arrow-button:click{
-  transform: rotate(180deg), scale(1.2);
+
+@media only screen and (min-width: 790px) {
+
+  .narrow{
+    display: none;
+  }
+
+  #narrow-buttons{
+    display: none;
+  } 
+
+  .wide {
+    display: block;
+  }
+
 }
 
-.right-arrow-button:click {
-  transform: scale(1.2);
+@media only screen and (max-width: 790px) {
+
+  .narrow{
+    display: block;
+  }
+
+  .wide {
+    display: none;
+  }
+
+  #narrow-buttons{
+    display: flex;
+    justify-content:space-between;
+  } 
+
+  #skills-slideshow-wrapper{
+    height: 100%
+  }
 }
 
 #skills-slideshow-container{
   border: 10px solid black;
 }
-
 /* Hide the images by default */
 .my-slides {
   display: none;

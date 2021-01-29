@@ -28,6 +28,23 @@
   border: 3px solid black;
   margin: 0px;
   padding: 1px;
-  font-size: 3vw;
+  font-size: 15px;
   height: 100%;
+}
+
+@media only screen and (max-width: 911px) {
+  section-menu-button-child{
+    font-size: 10px;
+  }
+}
+
+@media only screen and (max-width: 790) {
+
+  .narrow{
+    display: block;
+  }
+
+  .wide{
+    display: none;
+  }
 }

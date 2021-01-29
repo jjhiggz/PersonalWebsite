@@ -88,4 +88,33 @@ function addIframes(array) {
   showSlideAt(0);
   slideIndex = 0;
   slideLength = array.length;
+  updateIframeWidths();
+}
+
+var x = window.matchMedia("(max-width: 700px)");
+
+let mediaQueries = range(1, 2000).map((number) =>
+  window.matchMedia(`(width: ${number}px)`)
+);
+
+let matched = mediaQueries.map((query) => query.matches);
+
+let watchInterval = setInterval(() => {
+  const isMatched =
+    JSON.stringify(matched) ===
+    JSON.stringify(mediaQueries.map((query) => query.matches));
+  matched = mediaQueries.map((query) => query.matches);
+  if (!isMatched) {
+    const queryWidth = matched.findIndex((matches) => matches === true) + 1;
+    updateIframeWidths();
+  }
+}, 100);
+
+function updateIframeWidths() {
+  const skillsSectionWidth = document.querySelector(".section-menu")
+    .offsetWidth;
+  document.querySelectorAll("iframe").forEach((iframe) => {
+    iframe.width = skillsSectionWidth - 20;
+    iframe.height = (iframe.width * 9) / 16;
+  });
 }
