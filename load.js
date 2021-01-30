@@ -1,3 +1,3 @@
 document.addEventListener("DOMContentLoaded", () => {
-  window.location.href = "/about.html";
+	window.location.href = "https://jon-higger-software-dev.web.app/about.html";
 });
