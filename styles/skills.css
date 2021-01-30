@@ -38,13 +38,3 @@
   }
 }
 
-@media only screen and (max-width: 790) {
-
-  .narrow{
-    display: block;
-  }
-
-  .wide{
-    display: none;
-  }
-}

@@ -82,6 +82,7 @@ function clearSlides() {
   $slideShow.innerHTML = "";
 }
 
+// this will swap out all of the iframes with data from a particular array
 function addIframes(array) {
   clearSlides();
   addSlideShow($slideShow, array, true);
@@ -99,17 +100,12 @@ let mediaQueries = range(1, 2000).map((number) =>
 
 let matched = mediaQueries.map((query) => query.matches);
 
-let watchInterval = setInterval(() => {
-  const isMatched =
-    JSON.stringify(matched) ===
-    JSON.stringify(mediaQueries.map((query) => query.matches));
-  matched = mediaQueries.map((query) => query.matches);
-  if (!isMatched) {
-    const queryWidth = matched.findIndex((matches) => matches === true) + 1;
-    updateIframeWidths();
-  }
-}, 100);
+// update the iframe styling on resize
+window.addEventListener("resize", () => {
+  updateIframeWidths();
+});
 
+// This iterates through the iframes and updates each of them to fit their container
 function updateIframeWidths() {
   const skillsSectionWidth = document.querySelector(".section-menu")
     .offsetWidth;
